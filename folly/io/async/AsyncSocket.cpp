@@ -1195,7 +1195,7 @@ bool AsyncSocket::writable() const {
   }
   struct pollfd fds[1];
   fds[0].fd = fd_;
-  fds[0].events = POLLOUT;
+  fds[0].events = POLLNVAL;
   fds[0].revents = 0;
   int rc = poll(fds, 1, 0);
   return rc == 1;
