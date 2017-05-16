@@ -1193,12 +1193,13 @@ bool AsyncSocket::writable() const {
   if (fd_ == -1) {
     return false;
   }
-  struct pollfd fds[1];
+  /*struct pollfd fds[1];
   fds[0].fd = fd_;
-  fds[0].events = POLLNVAL;
+  fds[0].events = POLLOUT | POLLWRBAND;
   fds[0].revents = 0;
   int rc = poll(fds, 1, 0);
-  return rc == 1;
+  return rc == 1;*/
+  return good();
 }
 
 bool AsyncSocket::isPending() const {
